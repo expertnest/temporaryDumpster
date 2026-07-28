@@ -1,15 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+
 import {
   DollarSign,
   Truck,
   Star,
   Leaf,
 } from "lucide-react";
-
 
 
 const heroImages = [
@@ -22,76 +21,33 @@ const heroImages = [
 
 
 
-import { Variants } from "framer-motion";
-const fadeUp: Variants = {
-    hidden: {
-      opacity: 0,
-      y: 40,
-    },
-  
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0, 0, 0.2, 1],
-      },
-    },
-  };
+export default function Hero() {
 
-const stagger: Variants = {
-  hidden: {},
 
-  show: {
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
+  const [activeImage, setActiveImage] = useState(0);
+
+
+
+  useEffect(() => {
+
+    const interval = setInterval(() => {
+
+      setActiveImage((prev) =>
+        (prev + 1) % heroImages.length
+      );
+
+    }, 6000);
+
+
+    return () => clearInterval(interval);
+
+
+  }, []);
 
 
 
 
-
-export default function Hero(){
-
-
-
-const [activeImage,setActiveImage] = useState(0);
-
-
-
-
-useEffect(()=>{
-
-
-const interval = setInterval(()=>{
-
-
-setActiveImage((prev)=>
-(prev + 1) % heroImages.length
-);
-
-
-},6000);
-
-
-
-return ()=>clearInterval(interval);
-
-
-
-},[]);
-
-
-
-
-
-
-
-return (
-
-
+  return (
 
 <section
 
@@ -105,11 +61,7 @@ bg-brand-primary
 >
 
 
-
-
-
 {/* BACKGROUND GLOWS */}
-
 
 
 <div
@@ -128,9 +80,6 @@ blur-[120px]
 "
 
 />
-
-
-
 
 
 <div
@@ -154,72 +103,31 @@ blur-[100px]
 
 
 
-
-
 {/* MOBILE IMAGE */}
 
 
-
-<motion.div
-
-
-initial={{
-opacity:0,
-scale:1.05
-}}
-
-
-animate={{
-opacity:1,
-scale:1
-}}
-
-
-transition={{
-duration:1
-}}
-
+<div
 
 className="
 relative
 h-[275px]
 overflow-hidden
 xl:hidden
+animate-fade-in
 "
-
 
 >
 
 
-
-<motion.div
-
+<div
 
 key={activeImage}
-
-
-initial={{
-opacity:0,
-scale:1.08
-}}
-
-
-animate={{
-opacity:1,
-scale:1
-}}
-
-
-transition={{
-duration:1
-}}
-
 
 className="
 absolute
 inset-0
+animate-fade-in
 "
-
 
 >
 
@@ -240,9 +148,7 @@ className="
 object-cover
 "
 
- />
-
-
+/>
 
 
 
@@ -264,17 +170,14 @@ to-transparent
 />
 
 
+</div>
 
-
-
-</motion.div>
 
 
 
 
 
 {/* MOBILE DOTS */}
-
 
 
 <div
@@ -292,14 +195,15 @@ gap-2
 
 
 {
-heroImages.map((_,index)=>(
-
+heroImages.map((_, index) => (
 
 <button
 
 key={index}
 
-onClick={()=>setActiveImage(index)}
+aria-label={`Show image ${index + 1}`}
+
+onClick={() => setActiveImage(index)}
 
 className={`
 h-2
@@ -307,31 +211,32 @@ rounded-full
 transition-all
 
 ${
-activeImage===index
+activeImage === index
+
 ?
+
 "w-8 bg-brand-accent"
+
 :
+
 "w-2 bg-white/50"
+
 }
 
 `}
 
 />
 
-
 ))
 
 }
-
 
 
 </div>
 
 
 
-
-
-</motion.div>
+</div>
 
 
 
@@ -342,7 +247,6 @@ activeImage===index
 
 
 {/* MAIN GRID */}
-
 
 
 <div
@@ -365,24 +269,11 @@ xl:grid-cols-[50%_50%]
 
 
 
-
-
-
 {/* LEFT CONTENT */}
 
 
 
-<motion.div
-
-
-variants={fadeUp}
-
-
-initial="hidden"
-
-
-animate="show"
-
+<div
 
 className="
 flex
@@ -405,12 +296,11 @@ xl:pl-8
 xl:pr-12
 
 2xl:min-h-[560px]
+
+animate-fade-up
 "
 
-
 >
-
-
 
 
 <div
@@ -477,7 +367,6 @@ xl:text-5xl
 >
 
 
-
 <span
 
 className="
@@ -499,7 +388,6 @@ Temporary Dumpsters
 
 
 
-
 <span
 
 className="
@@ -514,11 +402,13 @@ sm:whitespace-nowrap
 
 >
 
+
 <span className="text-white">
 
 for a{" "}
 
 </span>
+
 
 
 <span className="text-brand-accent">
@@ -528,11 +418,16 @@ Cleaner Tomorrow.
 </span>
 
 
+
 </span>
 
 
-
 </h1>
+
+
+
+
+
 <p
 
 className="
@@ -555,11 +450,7 @@ Temporary Dumpster provides dumpster rental services nationwide.
 Contact us today for all your waste removal needs!
 
 </p>
-
-
-
-
-
+{/* BUTTONS */}
 
 
 <div
@@ -613,7 +504,6 @@ ORDER ONLINE
 
 
 
-
 <button
 
 className="
@@ -655,17 +545,10 @@ GET A QUOTE
 
 
 
-<motion.div
+{/* FEATURES */}
 
 
-variants={stagger}
-
-
-initial="hidden"
-
-
-animate="show"
-
+<div
 
 className="
 mt-6
@@ -693,10 +576,7 @@ md:grid-cols-4
 md:gap-x-6
 "
 
-
 >
-
-
 
 
 <Feature
@@ -760,10 +640,7 @@ color="text-lime-400"
 />
 
 
-
-
-</motion.div>
-
+</div>
 
 
 
@@ -771,7 +648,7 @@ color="text-lime-400"
 </div>
 
 
-</motion.div>
+</div>
 
 
 
@@ -802,7 +679,6 @@ xl:block
 >
 
 
-
 <div
 
 className="
@@ -816,65 +692,32 @@ overflow-hidden
 >
 
 
-
-<motion.div
-
+<div
 
 key={activeImage}
 
-
-initial={{
-opacity:0
-}}
-
-
-animate={{
-opacity:1
-}}
-
-
-transition={{
-duration:1
-}}
-
-
 className="
 absolute
 
 inset-0
+
+animate-fade-in
 "
 
 >
 
 
-
-
-<motion.div
-
-
-animate={{
-scale:[1,1.08,1],
-x:[0,-12,0]
-}}
-
-
-transition={{
-duration:18,
-
-repeat:Infinity,
-
-ease:"easeInOut"
-}}
-
+<div
 
 className="
 absolute
 
 inset-0
+
+animate-hero-zoom
 "
 
 >
-
 
 
 <Image
@@ -899,11 +742,6 @@ object-cover
 
 
 
-
-{/* PREMIUM OVERLAYS */}
-
-
-
 <div
 
 className="
@@ -921,7 +759,6 @@ to-transparent
 "
 
 />
-
 
 
 
@@ -945,23 +782,19 @@ to-transparent
 />
 
 
+</div>
 
 
-
-</motion.div>
-
-
-
-
-
-</motion.div>
+</div>
 
 
 
 
 
 
-{/* IMAGE CONTROLS */}
+
+
+{/* IMAGE DOTS */}
 
 
 
@@ -982,7 +815,6 @@ gap-2
 >
 
 
-
 {
 heroImages.map((_,index)=>(
 
@@ -991,9 +823,12 @@ heroImages.map((_,index)=>(
 
 key={index}
 
+aria-label={`Show image ${index + 1}`}
+
 onClick={()=>setActiveImage(index)}
 
 className={`
+
 h-2
 
 rounded-full
@@ -1026,6 +861,13 @@ activeImage===index
 }
 
 
+</div>
+
+
+
+</div>
+
+
 
 </div>
 
@@ -1036,29 +878,12 @@ activeImage===index
 
 
 </div>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-</div>
-
 
 
 </section>
 
 
-
 )
-
 
 
 }
@@ -1094,16 +919,10 @@ color:string;
 }){
 
 
-
 return (
 
 
-
-<motion.div
-
-
-variants={fadeUp}
-
+<div
 
 className="
 flex
@@ -1113,15 +932,17 @@ items-start
 gap-3
 
 min-w-0
+
+animate-fade-up
 "
 
 >
 
 
-
 <div
 
 className={`
+
 mt-1
 
 h-6
@@ -1131,6 +952,7 @@ w-6
 shrink-0
 
 ${color}
+
 `}
 
 >
@@ -1143,8 +965,6 @@ ${color}
 
 
 
-
-
 <div
 
 className="
@@ -1152,7 +972,6 @@ min-w-0
 "
 
 >
-
 
 
 <p
@@ -1195,14 +1014,10 @@ text-white/60
 
 
 
-
-
-</motion.div>
-
+</div>
 
 
 )
-
 
 
 }
