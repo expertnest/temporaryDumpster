@@ -19,7 +19,7 @@ const TopUtilityBar = () => {
             className="flex items-center justify-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-black text-white backdrop-blur-sm transition hover:bg-white/20"
           >
             <Phone size={15} strokeWidth={2.5} />
-            <span>1-800-800-8000</span>
+            <span>1-800-513-4973</span>
           </a>
         </div>
 

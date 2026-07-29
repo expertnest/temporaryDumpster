@@ -14,7 +14,7 @@ const benefits = [
     title: "Upfront Pricing",
     subtitle: "No Hidden Fees",
     description:
-      "Know your dumpster rental cost before your project starts. We provide clear pricing with no surprise charges or unexpected fees.",
+      "Plan your project with confidence. Our upfront dumpster rental pricing means no unexpected fees or hidden costs, and our weight calculators help you estimate your total cost before you book.",
     image: "/upfront.jpg",
     icon: DollarSign,
     iconBg: "bg-emerald-100",
