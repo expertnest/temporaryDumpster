@@ -21,17 +21,12 @@ export default function Home() {
     <main className="min-h-screen bg-white overflow-hidden">
       <TopUtilityBar />
       <Navbar />
-
       <Hero />
-
       <ServiceLocator />
-
       <DumpsterSizes />
-
       <DumpsterProjects />
-
       <DumpsterServices />
-       <TrustBanner />
+      <TrustBanner />
 
       <WhyTemporaryDumpsters />
 

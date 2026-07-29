@@ -27,7 +27,7 @@ const dumpsters = [
   },
   {
     size: "20 Yard Dumpster",
-    image: "/20yard.png",
+    image: "/20Yard.png",
     icon: Hammer,
     bestFor: "Remodels • Roofing • Renovations",
     description:
