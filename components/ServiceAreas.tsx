@@ -329,7 +329,7 @@ items-start
 
 gap-8
 
-lg:grid-cols-[400px_1fr]
+lg:grid-cols-[350px_1fr]
 "
 >
 
@@ -356,7 +356,7 @@ rounded-3xl
 shadow-xl
 
 
-lg:h-[430px]
+lg:h-[400px]
 "
 >
 
@@ -478,7 +478,7 @@ Reliable Dumpster Rentals Wherever You Need Us
 
 <div
 className="
-mt-5
+ 
 
 grid
 
