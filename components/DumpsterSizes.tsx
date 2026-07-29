@@ -19,7 +19,7 @@ const dumpsters = [
   },
   {
     size: "15 Yard Dumpster",
-    image: "/10-yard.png",
+    image: "/15yard.png",
     icon: Home,
     bestFor: "Home Cleanouts • Garages • Basements",
     description:
@@ -27,7 +27,7 @@ const dumpsters = [
   },
   {
     size: "20 Yard Dumpster",
-    image: "/10-yard.png",
+    image: "/20yard.png",
     icon: Hammer,
     bestFor: "Remodels • Roofing • Renovations",
     description:
@@ -35,7 +35,7 @@ const dumpsters = [
   },
   {
     size: "30 Yard Dumpster",
-    image: "/10-yard.png",
+    image: "/30yard.png",
     icon: Building2,
     bestFor: "Construction • Demolition • Large Projects",
     description:
@@ -43,7 +43,7 @@ const dumpsters = [
   },
   {
     size: "40 Yard Dumpster",
-    image: "/10-yard.png",
+    image: "/40yard.png",
     icon: Truck,
     bestFor: "Commercial • Industrial • Major Cleanup",
     description:

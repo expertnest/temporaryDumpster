@@ -69,6 +69,7 @@ const Navbar = () => {
         {/* MOBILE BUTTON */}
         <button
           onClick={() => setOpen(true)}
+            aria-label="Open menu"
           className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary text-white lg:hidden"
         >
           <Menu size={22} />
